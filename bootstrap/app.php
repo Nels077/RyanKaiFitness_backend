@@ -41,6 +41,20 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->singleton(
+    \App\Http\Contracts\UserRepositoryInterface::class,
+    \App\Http\Repositories\UserRepository::class
+);
+
+$app->singleton(
+    \App\Http\Contracts\MembershipRepositoryInterface::class,
+    \App\Http\Repositories\MembershipRepository::class
+);
+
+$app->singleton(
+    \App\Http\Contracts\FitnessClassRepositoryInterface::class,
+    \App\Http\Repositories\FitnessClassRepository::class
+);
 /*
 |--------------------------------------------------------------------------
 | Return The Application
