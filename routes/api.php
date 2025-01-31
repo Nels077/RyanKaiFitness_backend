@@ -25,7 +25,9 @@ Route::post('/', [UserController::class, 'create'])->name('users.create')->middl
 
 Route::post('/auth/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth:sanctum');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')
+    ->middleware('auth:sanctum')
+;
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/', [UserController::class, 'index'])->name('users.index');
@@ -41,7 +43,7 @@ Route::group(['prefix' => 'memberships', 'middleware' => 'auth:sanctum'], functi
     Route::post('/{id}/book', [MembershipController::class, 'bookMembership'])->name('membership.book');
     Route::post('/{id}/benefits', [MembershipController::class, 'addBenefits'])->name('membership.addBenefits');
     Route::put('/{membershipId}/benefits/{benefitId}', [MembershipController::class, 'updateBenefit'])->name('membership.updateBenefit');
-    Route::put('/{id}', [MembershipController::class, 'update'])->name('membership.update');
+    Route::put('/{id}   ', [MembershipController::class, 'update'])->name('membership.update');
     Route::delete('/{id}', [MembershipController::class, 'delete'])->name('membership.delete');
 });
 

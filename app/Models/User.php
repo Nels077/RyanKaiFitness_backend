@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(FitnessClass::class, 'fitness_class_user');
     }
+
+    public function successStories(): BelongsToMany
+    {
+        return $this->belongsToMany(SuccessStories::class);
+    }
 }

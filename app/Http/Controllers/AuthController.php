@@ -58,7 +58,7 @@ class AuthController extends Controller
     {
         $user = $this->userRepository->login(['email' => $request->input('email')]);
 
-        if ($user && Hash::check($request->input('password'), $user->password)) {
+        if ($user && (Hash::check($request->input('password'), $user->password))) {
             $token = $user->createToken('token');
 
             return response()->json(['user' => $user, 'token' => $token->plainTextToken]);
@@ -67,7 +67,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => 'error',
             'message' => 'Invalid credentials',
-        ], 404);
+        ], 401);
     }
 
     /**
